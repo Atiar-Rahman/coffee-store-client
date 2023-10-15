@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CoffeeCards = ({ coffee, coffees, setCoffees }) => {
-  const { _id, name, quantity, supplier, taste, photo } =
-    coffee;
+  const { _id, name, quantity, supplier, taste, photo } = coffee;
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -19,9 +18,12 @@ const CoffeeCards = ({ coffee, coffees, setCoffees }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         //   deleteing fetch data
-        fetch(`http://localhost:5000/coffee/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://coffee-store-server-mg2yljc1q-atiars-projects.vercel.app/coffee/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -47,7 +49,6 @@ const CoffeeCards = ({ coffee, coffees, setCoffees }) => {
           <p>{quantity}</p>
           <p>{supplier}</p>
           <p>{taste}</p>
-          <p>{quantity}</p>
         </div>
         <div className="card-actions  flex-col">
           <button className="btn">view</button>
